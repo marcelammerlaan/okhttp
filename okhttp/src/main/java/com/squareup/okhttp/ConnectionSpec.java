@@ -41,6 +41,10 @@ public final class ConnectionSpec {
   // All of these suites are available on Android 5.0; earlier releases support a subset of
   // these suites. https://github.com/square/okhttp/issues/330
   private static final CipherSuite[] APPROVED_CIPHER_SUITES = new CipherSuite[] {
+	  // Added for TLSv1.3
+      CipherSuite.TLS_AES_128_GCM_SHA256,
+      CipherSuite.TLS_CHACHA20_POLY1305_SHA256,
+		  
       CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
       CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
       CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,
@@ -61,6 +65,12 @@ public final class ConnectionSpec {
   };
 
   /** A modern TLS connection with extensions like SNI and ALPN available. */
+  public static final ConnectionSpec MODERN13_TLS = new Builder(true)
+	      .cipherSuites(APPROVED_CIPHER_SUITES)
+	      .tlsVersions(TlsVersion.TLS_1_3)
+	      .supportsTlsExtensions(true)
+	      .build();
+  
   public static final ConnectionSpec MODERN_TLS = new Builder(true)
       .cipherSuites(APPROVED_CIPHER_SUITES)
       .tlsVersions(TlsVersion.TLS_1_2, TlsVersion.TLS_1_1, TlsVersion.TLS_1_0)

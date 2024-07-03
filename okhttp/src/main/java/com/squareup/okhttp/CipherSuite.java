@@ -30,6 +30,8 @@ import static java.lang.Integer.MAX_VALUE;
  * from conscrypt, which lists the cipher suites supported by Android.
  */
 public enum CipherSuite {
+  TLS_CHACHA20_POLY1305_SHA256("TLS_CHACHA20_POLY1305_SHA256", 0x1303, 5246, 6, 10),
+  TLS_AES_128_GCM_SHA256("TLS_AES_128_GCM_SHA256", 0x0001, 5246, 6, 10),
   // Last updated 2014-11-11 using cipher suites from Android 21 and Java 8.
 
   // TLS_NULL_WITH_NULL_NULL("TLS_NULL_WITH_NULL_NULL", 0x0000, 5246, MAX_VALUE, MAX_VALUE),

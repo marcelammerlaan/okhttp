@@ -55,7 +55,7 @@ public class OkHttpClient implements Cloneable {
       Protocol.HTTP_2, Protocol.SPDY_3, Protocol.HTTP_1_1);
 
   private static final List<ConnectionSpec> DEFAULT_CONNECTION_SPECS = Util.immutableList(
-      ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS, ConnectionSpec.CLEARTEXT);
+		  ConnectionSpec.MODERN13_TLS, ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS, ConnectionSpec.CLEARTEXT);
 
   static {
     Internal.instance = new Internal() {
@@ -628,7 +628,7 @@ public class OkHttpClient implements Cloneable {
   private synchronized SSLSocketFactory getDefaultSSLSocketFactory() {
     if (defaultSslSocketFactory == null) {
       try {
-        SSLContext sslContext = SSLContext.getInstance("TLS");
+        SSLContext sslContext = SSLContext.getInstance("TLSv1.3");
         sslContext.init(null, null, null);
         defaultSslSocketFactory = sslContext.getSocketFactory();
       } catch (GeneralSecurityException e) {

@@ -545,7 +545,7 @@ public final class HttpEngine {
     }
 
     if (request.header("User-Agent") == null) {
-      result.header("User-Agent", Version.userAgent());
+      result.header("User-Agent", /*Version.userAgent()*/ "okhttp/2.7.6-PIA" );
     }
 
     return result.build();
